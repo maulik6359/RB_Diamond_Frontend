@@ -8,6 +8,7 @@ import axios, {
 
 interface ApiResponse<T = any> {
   data: T;
+  meta?: any;
   status: number;
   message?: string;
 }
@@ -142,11 +143,12 @@ class ApiClient {
     config: AxiosRequestConfig
   ): Promise<ApiResponse<T>> {
     try {
-      const response = await this.client.request<T>(config);
+      const response = await this.client.request<any>(config);
       return {
-        data: response.data,
+        data: response.data.data,
+        meta: response.data.meta,
+        message: response.data.message || "Success",
         status: response.status,
-        message: "Success",
       };
     } catch (error) {
       throw error;

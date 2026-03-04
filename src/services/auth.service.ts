@@ -23,7 +23,7 @@ export const authService = {
      */
     async login(data: LoginRequest): Promise<AuthResponse> {
         const response = await apiClient.post<AuthResponse>('/auth/login', data);
-        return response.data;
+        return response.data as unknown as AuthResponse;
     },
 
     /**
@@ -31,7 +31,7 @@ export const authService = {
      */
     async register(data: RegisterRequest): Promise<AuthResponse> {
         const response = await apiClient.post<AuthResponse>('/auth/register', data);
-        return response.data;
+        return response.data as unknown as AuthResponse;
     },
 
     /**
@@ -39,7 +39,7 @@ export const authService = {
      */
     async refreshToken(data: RefreshTokenRequest): Promise<AuthResponse> {
         const response = await apiClient.post<AuthResponse>('/auth/refresh-token', data);
-        return response.data;
+        return response.data as unknown as AuthResponse;
     },
 
     /**

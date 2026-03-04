@@ -20,10 +20,13 @@ export const employeeService = {
      * Get all employees with optional pagination
      */
     async getAll(params?: PaginationParams): Promise<PaginatedResponse<Employee>> {
-        const response = await apiClient.get<PaginatedResponse<Employee>>('/employees', {
+        const response = await apiClient.get<Employee[]>('/employees', {
             params,
         });
-        return response.data;
+        return {
+            data: response.data,
+            meta: response.meta,
+        };
     },
 
     /**

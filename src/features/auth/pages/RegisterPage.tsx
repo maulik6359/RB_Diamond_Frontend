@@ -40,9 +40,9 @@ const RegisterPage: React.FC = () => {
       const response = await authService.register(registerData);
 
       dispatch(login({
-        user: response.data.user,
-        token: response.data.tokens.accessToken,
-        refreshToken: response.data.tokens.refreshToken,
+        user: response.user,
+        token: response.tokens.accessToken,
+        refreshToken: response.tokens.refreshToken,
       }));
 
       showSuccess('Registration successful!');

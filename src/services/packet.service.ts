@@ -24,10 +24,13 @@ export const packetService = {
      * Get all packets with optional pagination
      */
     async getAll(params?: PaginationParams): Promise<PaginatedResponse<Packet>> {
-        const response = await apiClient.get<PaginatedResponse<Packet>>('/packets', {
+        const response = await apiClient.get<Packet[]>('/packets', {
             params,
         });
-        return response.data;
+        return {
+            data: response.data,
+            meta: response.meta,
+        };
     },
 
     /**
@@ -42,10 +45,13 @@ export const packetService = {
      * Get packets by status
      */
     async getByStatus(status: PacketStatus, params?: PaginationParams): Promise<PaginatedResponse<Packet>> {
-        const response = await apiClient.get<PaginatedResponse<Packet>>('/packets/by-status', {
+        const response = await apiClient.get<Packet[]>('/packets/by-status', {
             params: { ...params, status },
         });
-        return response.data;
+        return {
+            data: response.data,
+            meta: response.meta,
+        };
     },
 
     /**

@@ -70,6 +70,13 @@ const DashboardTable: React.FC<DashboardTableProps> = ({ packets }) => {
       ),
     },
     {
+      key: "client",
+      header: "Client",
+      render: (packet) => (
+        <span className="text-gray-600">{packet.client?.name || "-"}</span>
+      ),
+    },
+    {
       key: "createdAt",
       header: "Created",
       render: (packet) => (

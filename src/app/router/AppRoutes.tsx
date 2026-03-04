@@ -19,6 +19,11 @@ import PacketList from "../../features/packets/pages/PacketList.tsx";
 import PacketCreate from "../../features/packets/pages/PacketCreate.tsx";
 import PacketEdit from "../../features/packets/pages/PacketEdit.tsx";
 
+// Client pages
+import ClientList from "../../features/clients/pages/ClientList.tsx";
+import ClientCreate from "../../features/clients/pages/ClientCreate.tsx";
+import ClientEdit from "../../features/clients/pages/ClientEdit.tsx";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -37,6 +42,11 @@ const AppRoutes = () => {
         <Route path="/employees" element={<EmployeeList />} />
         <Route path="/employees/create" element={<EmployeeCreate />} />
         <Route path="/employees/:id/edit" element={<EmployeeEdit />} />
+
+        {/* Client routes */}
+        <Route path="/clients" element={<ClientList />} />
+        <Route path="/clients/create" element={<ClientCreate />} />
+        <Route path="/clients/:id/edit" element={<ClientEdit />} />
 
         {/* Packet routes */}
         <Route path="/packets" element={<PacketList />} />

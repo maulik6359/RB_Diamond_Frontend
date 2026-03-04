@@ -29,9 +29,9 @@ const LoginPage: React.FC = () => {
       const response = await authService.login(values);
 
       dispatch(login({
-        user: response.data.user,
-        token: response.data.tokens.accessToken,
-        refreshToken: response.data.tokens.refreshToken,
+        user: response.user,
+        token: response.tokens.accessToken,
+        refreshToken: response.tokens.refreshToken,
       }));
 
       showSuccess('Login successful!');

@@ -28,14 +28,11 @@ export interface RegisterRequest {
 }
 
 export interface AuthResponse {
-    data: {
-        user: User;
-        tokens: {
-            accessToken: string;
-            refreshToken: string;
-        }
-    },
-    meta: any
+    user: User;
+    tokens: {
+        accessToken: string;
+        refreshToken: string;
+    }
 }
 
 export interface RefreshTokenRequest {
@@ -70,6 +67,34 @@ export interface UpdateEmployeeRequest {
 }
 
 // ============================================================================
+// CLIENT TYPES
+// ============================================================================
+
+export interface Client {
+    id: string;
+    name: string;
+    email?: string | null;
+    phone?: string | null;
+    address?: string | null;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface CreateClientRequest {
+    name: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+}
+
+export interface UpdateClientRequest {
+    name?: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+}
+
+// ============================================================================
 // PACKET TYPES
 // ============================================================================
 
@@ -79,26 +104,51 @@ export interface Packet {
     id: string;
     userId: string;
     employeeId?: string | null;
+    clientId?: string | null;
     status: PacketStatus;
     description?: string | null;
     weight?: string | null;
     carat?: string | null;
+    tyareWeight?: string | null;
+    color?: string | null;
+    kasuWeight?: string | null;
+    peroty?: string | null;
+    shape?: string | null;
+    cut?: string | null;
+    polishWeight?: string | null;
     createdAt: string;
     updatedAt: string;
+    client?: Client;
     employee?: Employee;
     user?: User;
 }
 
 export interface CreatePacketRequest {
+    clientId: string;
     description?: string;
     weight?: number;
     carat?: number;
+    tyareWeight?: number;
+    color?: string;
+    kasuWeight?: number;
+    peroty?: number;
+    shape?: string;
+    cut?: string;
+    polishWeight?: number;
 }
 
 export interface UpdatePacketRequest {
+    clientId?: string;
     description?: string;
     weight?: number;
     carat?: number;
+    tyareWeight?: number;
+    color?: string;
+    kasuWeight?: number;
+    peroty?: number;
+    shape?: string;
+    cut?: string;
+    polishWeight?: number;
 }
 
 export interface AssignPacketRequest {
@@ -144,6 +194,7 @@ export interface PaginatedResponse<T> {
 
 export interface ApiResponse<T = any> {
     data: T;
+    meta?: any;
     status: number;
     message?: string;
 }
